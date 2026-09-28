@@ -353,12 +353,60 @@
                 height: 50px;
             }
         }
+        /* --- Logotipo Minimalista --- */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .logo-mark {
+            width: 65px;
+            height: 65px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 2px solid var(--secondary);
+        }
+
+        .logo-initials {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--secondary);
+            margin-top: -0.3rem;
+        }
+
+        header {
+            padding: 2.5rem 1rem !important; /* Ajuste visual opcional para el header */
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Estudio de Masajes María Jesús Riquelme SpA</h1>
+        <div class="logo-container">
+            <div class="logo-mark">
+                <span class="logo-initials">MJ</span>
+            </div>
+            <div>
+                <h1>Estudio de Masajes</h1>
+                <div class="logo-subtitle">María Jesús Riquelme SpA</div>
+            </div>
+        </div>
     </header>
 
     <section class="hero fade-in">
