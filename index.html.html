@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Masajes | María Jesús Riquelme SpA</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #7d9685; 
+            --secondary: #e6dfd8; 
+            --accent: #b08968; 
+            --text-dark: #333333;
+            --text-light: #555555;
+            --bg-color: #faf9f7;
+            --white: #ffffff;
+            --whatsapp: #25d366; 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .section-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(230, 223, 216, 0.7), rgba(125, 150, 133, 0.5));
+            padding: 5rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            width: 100%;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+        }
+
+        .hero-image {
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary);
+            border-radius: 12px;
+            z-index: 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border: 4px solid var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Botones --- */
+        .btn-principal {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(125, 150, 133, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-principal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(125, 150, 133, 0.6);
+            background-color: #6a8271;
+        }
+
+        /* Botón Flotante WhatsApp */
+        .wp-flotante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .wp-flotante:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- Secciones Generales --- */
+        .section {
+            padding: 6rem 1rem;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .about-text {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            font-size: 1.15rem;
+            border-left: 6px solid var(--accent);
+        }
+
+        /* --- Tarjetas de Servicios y Detalles Expandibles --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-top-color: var(--accent);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-subtitle {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Estilos para el texto oculto */
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin 0.3s ease;
+            opacity: 0;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .service-details.open {
+            max-height: 500px;
+            opacity: 1;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .service-details strong {
+            color: var(--primary);
+        }
+
+        .btn-toggle {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .btn-toggle:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--secondary);
+        }
+
+        .price-row:last-of-type {
+            border-bottom: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-label { font-weight: bold; color: var(--text-light); }
+        .price-value { font-weight: bold; color: var(--text-dark); }
+
+        /* --- Animaciones CSS para el Scroll --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--secondary);
+            text-align: center;
+            padding: 4rem 1rem 2rem 1rem;
+            width: 100%;
+        }
+
+        footer h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 4rem 1.5rem;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            .hero-image::before {
+                display: none; 
+            }
+            .wp-flotante {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Estudio de Masajes María Jesús Riquelme SpA</h1>
+    </header>
+
+    <section class="hero fade-in">
+        <div class="hero-content">
+            <h2>El equilibrio perfecto entre salud y relajación</h2>
+            <p>Terapias corporales profesionales en Viña del Mar. Especialista en recuperación, cuidado estético y relajación profunda.</p>
+            <a href="https://wa.me/56964151813?text=Hola,%20me%20gustaría%20agendar%20una%20hora%20para%20un%20masaje." target="_blank" class="btn-principal">
+                📅 Agendar tu hora
+            </a>
+        </div>
+        
+        <div class="hero-image">
+            <img src="grok-image-34b174b0-bd2f-4c82-8d47-512f6ed4ab4c.jpg" alt="María Jesús realizando masaje">
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="text-center fade-in">
+            <h2 class="section-title">Sobre mi trayectoria</h2>
+        </div>
+        <div class="about-text fade-in">
+            <p>Con mis estudios de base en <strong>Pedagogía en Educación Física</strong>, poseo un profundo conocimiento de la anatomía y el funcionamiento del cuerpo humano. Sumándole también los estudios de Masoterapia integral, cuento con <strong>más de 10 años de trayectoria</strong> en el rubro, desempeñándome en Spas de gran categoría y alto estándar de exigencia.</p>
+            <br>
+            <p>Tengo amplia experiencia clínica en el área de cirugías plásticas y recuperación postoperatoria, trabajando bajo la supervisión directa y enseñanzas del reconocido <strong>Dr. Roy Sothers</strong>. Mi objetivo es brindarte un servicio integral que combine técnica, seguridad y un profundo cuidado por tu bienestar físico.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="text-center fade-in">
+            <h2 class="section-title">Servicios y Valores</h2>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Tarjeta 1 -->
+            <div class="service-card fade-in">
+                <h3>Masajes Generales</h3>
+                <p class="service-subtitle">Relajación, Descontracturante, Mixto o Deportivo.</p>
+                
+                <button class="btn-toggle" onclick="toggleDetails('desc-1')">Ver detalles y beneficios ▼</button>
+                <div id="desc-1" class="service-details">
+                    <p><strong>Masaje de Relajación:</strong> Utiliza movimientos suaves y fluidos para calmar el sistema nervioso, reducir el estrés y promover un descanso profundo.</p>
+                    <br>
+                    <p><strong>Masaje Descontracturante:</strong> Aplica mayor presión enfocada en las zonas de dolor. Ideal para disolver nudos musculares, aliviar tensiones crónicas provocadas por posturas o estrés físico, y recuperar la movilidad.</p>
+                </div>
+
+                <div class="price-row">
+                    <span class="price-label">En mi consulta:</span>
+                    <span class="price-value">$25.000</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-label">A domicilio:</span>
+                    <span class="price-value">$30.000</span>
+                </div>
+                <div class="text-center" style="margin-top: 2rem;">
+                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20masaje%20general." target="_blank" class="btn-principal" style="font-size: 0.9rem; padding: 10px 20px; width: 100%;">Reservar ahora</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="service-card fade-in">
+                <h3>Drenaje Linfático Post Operatorio</h3>
+                <p class="service-subtitle">Tratamiento especializado para una recuperación segura.</p>
+                
+                <button class="btn-toggle" onclick="toggleDetails('desc-2')">Ver detalles y beneficios ▼</button>
+                <div id="desc-2" class="service-details">
+                    <p>Técnica terapéutica suave y rítmica que estimula el sistema linfático para eliminar líquidos retenidos y toxinas del cuerpo.</p>
+                    <br>
+                    <p><strong>Altamente indicado para:</strong> Acelerar la recuperación, reducir la inflamación (edema), evitar la formación de fibrosis y calmar el dolor tras cirugías plásticas como <strong>abdominoplastias y liposucciones</strong>.</p>
+                </div>
+
+                <div class="price-row">
+                    <span class="price-label">En mi consulta:</span>
+                    <span class="price-value">$20.000</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-label">A domicilio:</span>
+                    <span class="price-value">$25.000</span>
+                </div>
+                <div class="text-center" style="margin-top: 2rem;">
+                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20drenaje%20linfático%20post%20operatorio." target="_blank" class="btn-principal" style="font-size: 0.9rem; padding: 10px 20px; width: 100%;">Reservar ahora</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="service-card fade-in">
+                <h3>Masajes Reductivos</h3>
+                <p class="service-subtitle">Técnicas focalizadas para modelar la figura y tonificar.</p>
+                
+                <button class="btn-toggle" onclick="toggleDetails('desc-3')">Ver detalles y beneficios ▼</button>
+                <div id="desc-3" class="service-details">
+                    <p>Tratamiento estético que emplea maniobras vigorosas y rápidas para generar calor en las zonas a tratar.</p>
+                    <br>
+                    <p><strong>Beneficios:</strong> Ayuda a movilizar la adiposidad (grasa) localizada, estimula la circulación sanguínea y linfática, contribuye a modelar la silueta y mejora visiblemente la firmeza y el aspecto de la piel.</p>
+                </div>
+
+                <div class="price-row">
+                    <span class="price-label">En mi consulta:</span>
+                    <span class="price-value">$25.000</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-label">A domicilio:</span>
+                    <span class="price-value">$30.000</span>
+                </div>
+                <div class="text-center" style="margin-top: 2rem;">
+                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20masaje%20reductivo." target="_blank" class="btn-principal" style="font-size: 0.9rem; padding: 10px 20px; width: 100%;">Reservar ahora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante de WhatsApp con Icono Oficial (SVG) -->
+    <a href="https://wa.me/56964151813?text=Hola,%20me%20gustaría%20agendar%20una%20hora." class="wp-flotante" target="_blank" title="Contáctame por WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+        </svg>
+    </a>
+
+    <footer>
+        <h2>Estudio de Masajes María Jesús Riquelme SpA</h2>
+        <p>Contacto: <a href="https://wa.me/56964151813">+56 9 6415 1813</a></p>
+        <p>Email: <a href="mailto:mjesusriquelmelopez@gmail.com">mjesusriquelmelopez@gmail.com</a></p>
+        <p>Viña del Mar, Chile</p>
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">© 2026 Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        function toggleDetails(id) {
+            const element = document.getElementById(id);
+            const button = element.previousElementSibling;
+            
+            if (element.classList.contains('open')) {
+                element.classList.remove('open');
+                button.innerHTML = 'Ver detalles y beneficios ▼';
+            } else {
+                element.classList.add('open');
+                button.innerHTML = 'Ocultar detalles ▲';
+            }
+        }
+    </script>
+
+</body>
+</html>
