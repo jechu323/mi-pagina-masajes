@@ -4,57 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudio de Masajes | María Jesús Riquelme SpA</title>
-    
+    <meta name="description" content="Masajes terapéuticos, descontracturantes, deportivos, drenaje linfático postoperatorio y masajes reductivos a domicilio en Viña del Mar, Reñaca, Concón y Quilpué.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
-            --primary: #7d9685; 
-            --secondary: #e6dfd8; 
-            --accent: #b08968; 
+            --primary: #7d9685;
+            --primary-dark: #5f7768;
+            --secondary: #e6dfd8;
+            --accent: #b08968;
             --text-dark: #333333;
             --text-light: #555555;
             --bg-color: #faf9f7;
             --white: #ffffff;
-            --whatsapp: #25d366; 
+            --whatsapp: #25d366;
+            --footer-link: #c9dccf;
+            --nav-height: 72px;
+            --radius: 15px;
+            --shadow-soft: 0 4px 15px rgba(0,0,0,0.04);
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-dark);
             line-height: 1.6;
-            width: 100%;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        h1, h2, h3, .section-title {
-            font-family: 'Playfair Display', serif;
+        h1, h2, h3, .section-title, .logo-initials { font-family: 'Playfair Display', serif; }
+
+        section[id] { scroll-margin-top: var(--nav-height); }
+
+        a:focus-visible, button:focus-visible, summary:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
         }
 
-        header {
+        /* --- Barra de navegación --- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 900;
             background-color: var(--primary);
-            color: var(--white);
-            padding: 2rem 1rem;
-            text-align: center;
-            width: 100%;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        header h1 {
-            font-size: 2.2rem;
+        .nav-inner {
+            max-width: 1200px;
+            margin: auto;
+            height: var(--nav-height);
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 46px;
+            height: 46px;
+            flex-shrink: 0;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 2px solid var(--secondary);
+        }
+
+        .logo-initials {
+            font-size: 1.15rem;
             font-weight: 600;
+            color: var(--primary);
             letter-spacing: 1px;
         }
 
-        /* --- Hero Section --- */
+        .brand-text { line-height: 1.2; }
+        .brand-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; }
+        .brand-sub { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--secondary); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:not(.btn-nav)::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.btn-nav):hover::after,
+        .nav-links a.active::after { width: 100%; }
+
+        .btn-nav {
+            background-color: var(--white);
+            color: var(--primary-dark) !important;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: bold !important;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-nav:hover { background-color: var(--secondary); }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0.3rem 0.5rem;
+        }
+
+        /* --- Hero --- */
         .hero {
             background: linear-gradient(rgba(230, 223, 216, 0.7), rgba(125, 150, 133, 0.5));
             padding: 5rem 2rem;
@@ -63,27 +161,35 @@
             align-items: center;
             justify-content: center;
             gap: 4rem;
-            width: 100%;
-            min-height: 80vh;
+            min-height: calc(90vh - var(--nav-height));
         }
 
-        .hero-content {
-            max-width: 500px;
-            text-align: left;
-        }
+        .hero-content { max-width: 500px; }
 
-        .hero h2 {
+        .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: var(--text-dark);
             line-height: 1.2;
         }
 
         .hero p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
             color: var(--text-light);
         }
+
+        .zona-badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.7);
+            color: var(--primary-dark);
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
 
         .hero-image {
             max-width: 450px;
@@ -100,17 +206,16 @@
             height: 100%;
             border: 3px solid var(--primary);
             border-radius: 12px;
-            z-index: 0;
         }
 
         .hero-image img {
+            display: block;
             width: 100%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
             border: 4px solid var(--white);
             position: relative;
-            z-index: 1;
         }
 
         /* --- Botones --- */
@@ -118,6 +223,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 0.5rem;
             background-color: var(--primary);
             color: var(--white);
             padding: 14px 32px;
@@ -137,7 +243,22 @@
             background-color: #6a8271;
         }
 
-        /* Botón Flotante WhatsApp */
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-dark);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover { background-color: var(--primary); color: var(--white); }
+
+        .btn-sm {
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            width: 100%;
+        }
+
+        /* --- WhatsApp flotante --- */
         .wp-flotante {
             position: fixed;
             bottom: 30px;
@@ -152,14 +273,11 @@
             justify-content: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
             animation: pulse 2s infinite;
         }
 
-        .wp-flotante:hover {
-            transform: scale(1.1);
-        }
+        .wp-flotante:hover { transform: scale(1.1); }
 
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
@@ -167,20 +285,24 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* --- Secciones Generales --- */
+        /* --- Secciones --- */
         .section {
             padding: 6rem 1rem;
             max-width: 1100px;
             margin: auto;
         }
 
+        .section-alt { background-color: var(--white); }
+        .section-alt .section { padding-top: 5rem; padding-bottom: 5rem; }
+
+        .section-head { text-align: center; margin-bottom: 3rem; }
+
         .section-title {
-            text-align: center;
             color: var(--primary);
             font-size: 2.5rem;
-            margin-bottom: 3rem;
             position: relative;
             display: inline-block;
+            margin-bottom: 1.5rem;
         }
 
         .section-title::after {
@@ -194,34 +316,69 @@
             background-color: var(--accent);
         }
 
-        .text-center {
-            text-align: center;
-        }
+        .section-lead { color: var(--text-light); max-width: 650px; margin: 0.5rem auto 0; }
 
+        /* --- Sobre mí --- */
         .about-text {
             background-color: var(--white);
             padding: 3rem;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
             font-size: 1.15rem;
             border-left: 6px solid var(--accent);
         }
 
-        /* --- Tarjetas de Servicios y Detalles Expandibles --- */
+        .about-text p + p { margin-top: 1.2rem; }
+
+        .about-quote {
+            color: var(--primary-dark);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+            margin: 2rem 0 !important;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .stat {
+            text-align: center;
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .stat strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .stat span { color: var(--text-light); font-size: 0.95rem; }
+
+        /* --- Servicios --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
         }
 
         .service-card {
             background-color: var(--white);
-            border-radius: 15px;
+            border-radius: var(--radius);
             padding: 2.5rem 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
             border-top: 5px solid var(--primary);
-            transition: all 0.4s ease;
-            position: relative;
+            transition: box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.8s ease-out, transform 0.8s ease-out;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
@@ -229,41 +386,48 @@
             border-top-color: var(--accent);
         }
 
+        .service-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+
         .service-card h3 {
             color: var(--primary);
             font-size: 1.6rem;
             margin-bottom: 0.5rem;
+            line-height: 1.25;
         }
 
         .service-subtitle {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--text-light);
             font-style: italic;
         }
 
-        /* Estilos para el texto oculto */
+        .duration {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+        }
+
         .service-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin 0.3s ease;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin 0.3s ease, padding 0.3s ease;
             opacity: 0;
             background-color: var(--bg-color);
             border-radius: 8px;
             font-size: 0.95rem;
-            color: var(--text-dark);
         }
 
         .service-details.open {
-            max-height: 500px;
+            max-height: 900px;
             opacity: 1;
             padding: 1rem;
             margin-bottom: 1.5rem;
             border-left: 3px solid var(--accent);
         }
 
-        .service-details strong {
-            color: var(--primary);
-        }
+        .service-details p + p, .service-details ul { margin-top: 0.8rem; }
+        .service-details ul { padding-left: 1.2rem; }
+        .service-details strong { color: var(--primary-dark); }
 
         .btn-toggle {
             background: none;
@@ -275,378 +439,613 @@
             margin-bottom: 1.5rem;
             display: inline-flex;
             align-items: center;
+            gap: 0.4rem;
+            align-self: flex-start;
             transition: color 0.3s ease;
         }
 
-        .btn-toggle:hover {
-            color: var(--primary);
-            text-decoration: underline;
-        }
+        .btn-toggle:hover { color: var(--primary-dark); text-decoration: underline; }
+
+        .btn-toggle .arrow { transition: transform 0.3s ease; display: inline-block; }
+        .btn-toggle[aria-expanded="true"] .arrow { transform: rotate(180deg); }
+
+        .card-bottom { margin-top: auto; }
 
         .price-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
             padding-bottom: 1rem;
-            border-bottom: 1px dashed var(--secondary);
-        }
-
-        .price-row:last-of-type {
-            border-bottom: none;
             margin-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--secondary);
         }
 
         .price-label { font-weight: bold; color: var(--text-light); }
         .price-value { font-weight: bold; color: var(--text-dark); }
+        .price-value.consultar { color: var(--accent); }
 
-        /* --- Animaciones CSS para el Scroll --- */
+        /* --- Cómo funciona --- */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            counter-reset: paso;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .step-num {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .step h3 { color: var(--text-dark); font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .step p { color: var(--text-light); font-size: 0.95rem; }
+
+        /* --- FAQ --- */
+        .faq-container {
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--primary);
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.3rem 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-item summary::-webkit-details-marker { display: none; }
+
+        .faq-item summary::after {
+            content: '+';
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 1.6rem;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item[open] { border-left-color: var(--accent); }
+
+        .faq-item p {
+            color: var(--text-light);
+            padding: 0 2rem 1.5rem;
+        }
+
+        /* --- Reseñas --- */
+        .reviews-box {
+            text-align: center;
+            background-color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .reviews-stars { color: #C5A059; font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 0.8rem; }
+        .reviews-box h3 { font-size: 1.5rem; margin-bottom: 0.6rem; }
+        .reviews-box p { color: var(--text-light); margin-bottom: 1.8rem; }
+
+        .reviews-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* --- Animaciones --- */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* --- Footer --- */
         footer {
             background-color: var(--text-dark);
             color: var(--secondary);
-            text-align: center;
-            padding: 4rem 1rem 2rem 1rem;
-            width: 100%;
+            padding: 4rem 1rem 2rem;
         }
 
-        footer h2 {
-            color: var(--white);
-            margin-bottom: 1rem;
+        .footer-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
         }
+
+        footer h2 { color: var(--white); font-size: 1.4rem; margin-bottom: 0.8rem; }
+        footer h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 0.8rem; }
+        footer ul { list-style: none; }
+        footer li { margin-bottom: 0.4rem; }
 
         footer a {
-            color: var(--primary);
+            color: var(--footer-link);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            word-break: break-word;
+        }
+
+        footer a:hover { text-decoration: underline; color: var(--white); }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .nav-toggle { display: block; }
+
+            .nav-links {
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                background-color: var(--primary);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease;
+            }
+
+            .nav-links.open { max-height: 480px; }
+
+            .nav-links li { border-top: 1px solid rgba(255,255,255,0.15); }
+
+            .nav-links a {
+                display: block;
+                padding: 0.9rem 1.5rem;
+            }
+
+            .nav-links a:not(.btn-nav)::after { display: none; }
+
+            .nav-links .btn-nav {
+                margin: 0.8rem 1.5rem 1rem;
+                text-align: center;
+            }
         }
 
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
-                padding: 4rem 1.5rem;
+                padding: 3.5rem 1rem;
+                gap: 2.5rem;
             }
-            .hero-content {
-                text-align: center;
-            }
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            .hero-image::before {
-                display: none; 
-            }
-            .wp-flotante {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-            }
-        }
-        /* --- Logotipo Minimalista --- */
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
+            .hero h1 { font-size: 2.2rem; }
+            .hero-actions { justify-content: center; }
+            .hero-image::before { display: none; }
+            .section { padding: 4rem 1rem; }
+            .section-title { font-size: 2rem; }
+            .about-text { padding: 2rem 1.5rem; font-size: 1.05rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .faq-item summary { padding: 1.1rem 1.3rem; font-size: 1.05rem; }
+            .faq-item p { padding: 0 1.3rem 1.3rem; }
+            .footer-grid { text-align: center; }
+            .wp-flotante { bottom: 20px; right: 20px; width: 54px; height: 54px; }
         }
 
-        .logo-mark {
-            width: 65px;
-            height: 65px;
-            background-color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            border: 2px solid var(--secondary);
+        @media (max-width: 400px) {
+            .brand-sub { display: none; }
         }
 
-        .logo-initials {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--primary);
-            letter-spacing: 2px;
-        }
-
-        .logo-subtitle {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--secondary);
-            margin-top: -0.3rem;
-        }
-
-        header {
-            padding: 2.5rem 1rem !important; /* Ajuste visual opcional para el header */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .fade-in { opacity: 1; transform: none; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <div class="logo-mark">
-                <span class="logo-initials">MJ</span>
-            </div>
-            <div>
-                <h1>Estudio de Masajes</h1>
-                <div class="logo-subtitle">María Jesús Riquelme SpA</div>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero fade-in">
-        <div class="hero-content">
-            <h2>El equilibrio perfecto entre salud y relajación</h2>
-            <p>Terapias corporales profesionales a domicilio. Especialista en recuperación, cuidado estético y relajación profunda.</p>
-            <p style="font-size: 1.05rem; font-weight: bold; color: var(--primary); margin-top: -1rem; margin-bottom: 2rem;">📍 Zonas de atención: Viña del Mar, Reñaca, Concón y Quilpué</p>
-            <a href="https://wa.me/56964151813?text=Hola,%20me%20gustaría%20agendar%20una%20hora%20para%20un%20masaje." target="_blank" class="btn-principal">
-                 Agendar tu hora
+    <!-- Barra de navegación -->
+    <nav class="navbar" aria-label="Navegación principal">
+        <div class="nav-inner">
+            <a href="#inicio" class="brand" aria-label="Ir al inicio">
+                <span class="logo-mark"><span class="logo-initials">MJ</span></span>
+                <span class="brand-text">
+                    <span class="brand-name">Estudio de Masajes</span><br>
+                    <span class="brand-sub">María Jesús Riquelme SpA</span>
+                </span>
             </a>
+
+            <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
+
+            <ul class="nav-links" id="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#como-funciona">Cómo funciona</a></li>
+                <li><a href="#preguntas">Preguntas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="https://wa.me/56964151813?text=Hola,%20me%20gustaría%20agendar%20una%20hora%20para%20un%20masaje." target="_blank" rel="noopener" class="btn-nav">Agendar</a></li>
+            </ul>
         </div>
-        
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero fade-in" id="inicio">
+        <div class="hero-content">
+            <h1>El equilibrio perfecto entre salud y relajación</h1>
+            <p>Terapias corporales profesionales a domicilio. Especialista en recuperación, cuidado estético y relajación profunda.</p>
+            <span class="zona-badge">📍 Viña del Mar · Reñaca · Concón · Quilpué</span>
+            <div class="hero-actions">
+                <a href="https://wa.me/56964151813?text=Hola,%20me%20gustaría%20agendar%20una%20hora%20para%20un%20masaje." target="_blank" rel="noopener" class="btn-principal">Agendar tu hora</a>
+                <a href="#servicios" class="btn-principal btn-outline">Ver servicios</a>
+            </div>
+        </div>
+
         <div class="hero-image">
-            <img src="grok-image-34b174b0-bd2f-4c82-8d47-512f6ed4ab4c.jpg" alt="María Jesús realizando masaje">
+            <img src="grok-image-34b174b0-bd2f-4c82-8d47-512f6ed4ab4c.jpg" alt="Sesión de masaje terapéutico" width="864" height="1152">
         </div>
     </section>
 
-    <section class="section">
-        <div class="text-center fade-in">
+    <!-- Sobre mí -->
+    <section class="section" id="sobre-mi">
+        <div class="section-head fade-in">
             <h2 class="section-title">Sobre mi trayectoria</h2>
         </div>
         <div class="about-text fade-in">
             <p>Con una sólida formación en <strong>Pedagogía en Educación Física</strong> y estudios avanzados en Masoterapia Integral, poseo un profundo conocimiento de la anatomía, la biomecánica y el funcionamiento del cuerpo humano. A lo largo de mi carrera, he consolidado mi experiencia clínica realizando <strong>más de 10.000 masajes</strong>, desempeñándome en Spas de gran categoría y clínicas de alto estándar de exigencia.</p>
-            <br>
             <p>Destaco por mi amplia trayectoria clínica en el área de cirugías plásticas y recuperación postoperatoria, trabajando bajo la supervisión directa y las enseñanzas del reconocido <strong>Dr. Roy Sothers Menghini</strong>.</p>
-            <br>
-            <p style="color: var(--primary); font-weight: 500; font-size: 1.2rem; text-align: center; margin: 1.5rem 0;">"En cada una de mis terapias, el bienestar integral y la relajación profunda son pilares fundamentales."</p>
+            <p class="about-quote">"En cada una de mis terapias, el bienestar integral y la relajación profunda son pilares fundamentales."</p>
             <p>Mi principal compromiso es brindarte un servicio de excelencia a domicilio, combinando técnica precisa, máxima seguridad clínica y un profundo respeto por el cuidado de tu salud física y mental.</p>
+        </div>
+
+        <div class="stats fade-in">
+            <div class="stat"><strong>+10.000</strong><span>masajes realizados</span></div>
+            <div class="stat"><strong>Postoperatorio</strong><span>experiencia en clínicas de cirugía plástica</span></div>
+            <div class="stat"><strong>A domicilio</strong><span>llevo camilla y todo el equipamiento</span></div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="text-center fade-in">
+    <!-- Servicios -->
+    <section class="section" id="servicios">
+        <div class="section-head fade-in">
             <h2 class="section-title">Servicios y Valores</h2>
+            <p class="section-lead">Todas las sesiones se realizan en la comodidad de tu hogar.</p>
         </div>
-        
+
         <div class="services-grid">
-            <!-- Tarjeta 1 -->
-            <div class="service-card fade-in">
-            
-               <h3>Masajes Generales</h3>
-               <p class="service-subtitle">Relajación, Descontracturante, Mixto o Deportivo.</p>
-               <p style="font-weight: 600; color: var(--primary); margin-bottom: 0.8rem;"> Duración: 50 minutos</p>
-                
-                <button class="btn-toggle" onclick="toggleDetails('desc-1')">Ver detalles y beneficios ▼</button>
+            <!-- Masajes Generales -->
+            <article class="service-card fade-in">
+                <div class="service-icon" aria-hidden="true">💆‍♀️</div>
+                <h3>Masajes Generales</h3>
+                <p class="service-subtitle">Relajación, Descontracturante o Mixto.</p>
+                <p class="duration">⏱ Duración: 50 minutos</p>
+
+                <button class="btn-toggle" aria-expanded="false" aria-controls="desc-1">Ver detalles y beneficios <span class="arrow">▼</span></button>
                 <div id="desc-1" class="service-details">
                     <p><strong>Masaje de Relajación:</strong> Utiliza movimientos suaves y fluidos para calmar el sistema nervioso, reducir el estrés y promover un descanso profundo.</p>
-                    <br>
                     <p><strong>Masaje Descontracturante:</strong> Aplica mayor presión enfocada en las zonas de dolor. Ideal para disolver nudos musculares, aliviar tensiones crónicas provocadas por posturas o estrés físico, y recuperar la movilidad.</p>
+                    <p><strong>Masaje Mixto:</strong> Combina maniobras de relajación con trabajo descontracturante en las zonas de mayor tensión, para que salgas suelta(o) y relajada(o) en una misma sesión.</p>
                 </div>
 
-                <div class="price-row">
-                    <span class="price-label">A domicilio:</span>
-                    <span class="price-value">$30.000</span>
+                <div class="card-bottom">
+                    <div class="price-row">
+                        <span class="price-label">A domicilio:</span>
+                        <span class="price-value">$30.000</span>
+                    </div>
+                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20masaje%20general." target="_blank" rel="noopener" class="btn-principal btn-sm">Reservar ahora</a>
                 </div>
-                <div class="text-center" style="margin-top: 2rem;">
-                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20masaje%20general." target="_blank" class="btn-principal" style="font-size: 0.9rem; padding: 10px 20px; width: 100%;">Reservar ahora</a>
-                </div>
-            </div>
+            </article>
 
-            <!-- Tarjeta 2 -->
-            <div class="service-card fade-in">
+            <!-- Masaje Deportivo -->
+            <article class="service-card fade-in">
+                <div class="service-icon" aria-hidden="true">🏃‍♀️</div>
+                <h3>Masaje Deportivo</h3>
+                <p class="service-subtitle">Preparación, recuperación y prevención de lesiones.</p>
+                <p class="duration">⏱ Duración: 50 minutos</p>
+
+                <button class="btn-toggle" aria-expanded="false" aria-controls="desc-4">Ver detalles y beneficios <span class="arrow">▼</span></button>
+                <div id="desc-4" class="service-details">
+                    <p>Técnica enfocada en la musculatura que más trabaja en tu disciplina, combinando presión profunda, estiramientos y maniobras de activación o descarga según el momento de tu entrenamiento.</p>
+                    <ul>
+                        <li>Disminuye la fatiga y la sobrecarga muscular.</li>
+                        <li>Acelera la recuperación después de entrenar o competir.</li>
+                        <li>Mejora la flexibilidad y el rango de movimiento.</li>
+                        <li>Ayuda a prevenir lesiones por tensión acumulada.</li>
+                    </ul>
+                </div>
+
+                <div class="card-bottom">
+                    <div class="price-row">
+                        <span class="price-label">A domicilio:</span>
+                        <span class="price-value">$30.000</span>
+                    </div>
+                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20masaje%20deportivo." target="_blank" rel="noopener" class="btn-principal btn-sm">Reservar ahora</a>
+                </div>
+            </article>
+
+            <!-- Drenaje Linfático -->
+            <article class="service-card fade-in">
+                <div class="service-icon" aria-hidden="true">🩺</div>
                 <h3>Drenaje Linfático Post Operatorio</h3>
                 <p class="service-subtitle">Tratamiento especializado para una recuperación segura.</p>
-                <p style="font-weight: 600; color: var(--primary); margin-bottom: 0.8rem;"> Duración: 50 minutos</p>
-                
-                <button class="btn-toggle" onclick="toggleDetails('desc-2')">Ver detalles y beneficios ▼</button>
+                <p class="duration">⏱ Duración: 50 minutos</p>
+
+                <button class="btn-toggle" aria-expanded="false" aria-controls="desc-2">Ver detalles y beneficios <span class="arrow">▼</span></button>
                 <div id="desc-2" class="service-details">
                     <p>Técnica terapéutica suave y rítmica que estimula el sistema linfático para eliminar líquidos retenidos y toxinas del cuerpo.</p>
-                    <br>
                     <p><strong>Altamente indicado para:</strong> Acelerar la recuperación, reducir la inflamación (edema), evitar la formación de fibrosis y calmar el dolor tras cirugías plásticas como <strong>abdominoplastias y liposucciones</strong>.</p>
                 </div>
 
-               
-                <div class="price-row">
-                    <span class="price-label">A domicilio:</span>
-                    <span class="price-value">$25.000</span>
+                <div class="card-bottom">
+                    <div class="price-row">
+                        <span class="price-label">A domicilio:</span>
+                        <span class="price-value">$25.000</span>
+                    </div>
+                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20drenaje%20linfático%20post%20operatorio." target="_blank" rel="noopener" class="btn-principal btn-sm">Reservar ahora</a>
                 </div>
-                <div class="text-center" style="margin-top: 2rem;">
-                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20drenaje%20linfático%20post%20operatorio." target="_blank" class="btn-principal" style="font-size: 0.9rem; padding: 10px 20px; width: 100%;">Reservar ahora</a>
-                </div>
-            </div>
+            </article>
 
-            <!-- Tarjeta 3 -->
-            <div class="service-card fade-in">
+            <!-- Masajes Reductivos -->
+            <article class="service-card fade-in">
+                <div class="service-icon" aria-hidden="true">✨</div>
                 <h3>Masajes Reductivos</h3>
                 <p class="service-subtitle">Técnicas focalizadas para modelar la figura y tonificar.</p>
-                <p style="font-weight: 600; color: var(--primary); margin-bottom: 0.8rem;"> Duración: 50 minutos</p>
-                
-                <button class="btn-toggle" onclick="toggleDetails('desc-3')">Ver detalles y beneficios ▼</button>
+                <p class="duration">⏱ Duración: 50 minutos</p>
+
+                <button class="btn-toggle" aria-expanded="false" aria-controls="desc-3">Ver detalles y beneficios <span class="arrow">▼</span></button>
                 <div id="desc-3" class="service-details">
                     <p>Tratamiento estético que emplea maniobras vigorosas y rápidas para generar calor en las zonas a tratar.</p>
-                    <br>
                     <p><strong>Beneficios:</strong> Ayuda a movilizar la adiposidad (grasa) localizada, estimula la circulación sanguínea y linfática, contribuye a modelar la silueta y mejora visiblemente la firmeza y el aspecto de la piel.</p>
                 </div>
 
-                
-                <div class="price-row">
-                    <span class="price-label">A domicilio:</span>
-                    <span class="price-value">$30.000</span>
+                <div class="card-bottom">
+                    <div class="price-row">
+                        <span class="price-label">A domicilio:</span>
+                        <span class="price-value">$30.000</span>
+                    </div>
+                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20masaje%20reductivo." target="_blank" rel="noopener" class="btn-principal btn-sm">Reservar ahora</a>
                 </div>
-                <div class="text-center" style="margin-top: 2rem;">
-                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20agendar%20un%20masaje%20reductivo." target="_blank" class="btn-principal" style="font-size: 0.9rem; padding: 10px 20px; width: 100%;">Reservar ahora</a>
+            </article>
+
+
+            <!-- Productos de Bienestar -->
+            <article class="service-card fade-in">
+                <div class="service-icon" aria-hidden="true">🌿</div>
+                <h3>Productos de Bienestar</h3>
+                <p class="service-subtitle">Para continuar el cuidado en casa.</p>
+                <p class="duration">🛍 Venta directa</p>
+
+                <button class="btn-toggle" aria-expanded="false" aria-controls="desc-6">Ver detalles <span class="arrow">▼</span></button>
+                <div id="desc-6" class="service-details">
+                    <p>Productos seleccionados para complementar tus terapias y mantener sus beneficios entre sesiones: aceites de masaje, cremas y artículos de autocuidado.</p>
+                    <p>Pregúntame por el producto más adecuado para ti; también puedo llevarlo el día de tu sesión.</p>
                 </div>
+
+                <div class="card-bottom">
+                    <div class="price-row">
+                        <span class="price-label">Valores:</span>
+                        <span class="price-value consultar">Consultar</span>
+                    </div>
+                    <a href="https://wa.me/56964151813?text=Hola,%20quisiera%20información%20sobre%20los%20productos%20de%20bienestar." target="_blank" rel="noopener" class="btn-principal btn-sm">Consultar</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <div class="section-alt">
+        <section class="section" id="como-funciona">
+            <div class="section-head fade-in">
+                <h2 class="section-title">¿Cómo funciona?</h2>
+                <p class="section-lead">Agendar tu sesión a domicilio es simple.</p>
+            </div>
+
+            <div class="steps fade-in">
+                <div class="step">
+                    <div class="step-num" aria-hidden="true">💬</div>
+                    <h3>1. Escríbeme</h3>
+                    <p>Contáctame por WhatsApp y cuéntame qué servicio necesitas.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num" aria-hidden="true">📅</div>
+                    <h3>2. Agendamos</h3>
+                    <p>Elegimos juntas(os) día y hora, con al menos 24 horas de anticipación.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num" aria-hidden="true">🏠</div>
+                    <h3>3. Llego a tu casa</h3>
+                    <p>Llevo camilla, sábanas, aceites y música. Tú solo te relajas.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num" aria-hidden="true">💳</div>
+                    <h3>4. Pago simple</h3>
+                    <p>El pago se realiza mediante transferencia bancaria.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Preguntas Frecuentes -->
+    <section class="section" id="preguntas">
+        <div class="section-head fade-in">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <p class="section-lead">Todo lo que necesitas saber sobre tu sesión a domicilio.</p>
+        </div>
+
+        <div class="faq-container fade-in">
+            <details class="faq-item">
+                <summary>¿Qué necesito tener listo en casa?</summary>
+                <p>Un espacio donde poder instalar la camilla. Si el ambiente es frío, te recomiendo que se tempere previamente para una mejor experiencia de relajación.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>¿Qué equipamiento llevas tú?</summary>
+                <p>Llevo todo lo necesario: camilla portátil, sábanas, frazadas, música de relajación, aromaterapia y aceite hipoalergénico.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>¿Con cuánto tiempo debo agendar?</summary>
+                <p>Debes agendar con al menos 24 horas de anticipación.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>¿Cuál es el método de pago?</summary>
+                <p>El pago se realiza mediante transferencia bancaria.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>¿En qué zonas atiendes?</summary>
+                <p>Atiendo a domicilio en Viña del Mar, Reñaca, Concón y Quilpué. Si estás en otra comuna cercana, escríbeme y lo conversamos.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>¿Qué pasa si necesito cambiar mi hora?</summary>
+                <p>Avísame por WhatsApp con la mayor anticipación posible y buscamos juntas(os) un nuevo horario.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Opiniones -->
+    <section class="section" id="opiniones">
+        <div class="section-head fade-in">
+            <h2 class="section-title">Opiniones de Pacientes</h2>
+            <p class="section-lead">La experiencia y satisfacción de quienes confían en mi trabajo es mi mejor respaldo.</p>
+        </div>
+
+        <div class="reviews-box fade-in">
+            <div class="reviews-stars" aria-hidden="true">★★★★★</div>
+            <h3>Revisa mis reseñas en Google</h3>
+            <p>Conoce la experiencia de mis pacientes y, si ya recibiste una terapia conmigo, tu opinión ayuda a que otras personas tomen la mejor decisión para su bienestar.</p>
+            <div class="reviews-actions">
+                <a href="https://g.page/r/Cf1yF8eg_kZwEBM" target="_blank" rel="noopener" class="btn-principal btn-outline">Ver reseñas en Google</a>
+                <a href="https://g.page/r/Cf1yF8eg_kZwEBM/review" target="_blank" rel="noopener" class="btn-principal">⭐ Dejar una reseña</a>
             </div>
         </div>
     </section>
 
-    <!-- Botón Flotante de WhatsApp con Icono Oficial (SVG) -->
-    <a href="https://wa.me/56964151813?text=Hola,%20me%20gustaría%20agendar%20una%20hora." class="wp-flotante" target="_blank" title="Contáctame por WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/56964151813?text=Hola,%20me%20gustaría%20agendar%20una%20hora." class="wp-flotante" target="_blank" rel="noopener" aria-label="Contáctame por WhatsApp" title="Contáctame por WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
             <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
         </svg>
     </a>
 
-<!-- Sección de Preguntas Frecuentes -->
-    <section class="section">
-        <div class="text-center fade-in">
-            <h2 class="section-title">Preguntas Frecuentes</h2>
-            <p style="color: var(--text-light); margin-bottom: 2.5rem;">Todo lo que necesitas saber sobre tu sesión a domicilio.</p>
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="footer-grid">
+            <div>
+                <h2>Estudio de Masajes</h2>
+                <p>María Jesús Riquelme SpA. Masoterapia profesional a domicilio, con técnica precisa y seguridad clínica.</p>
+            </div>
+            <div>
+                <h3>Contacto</h3>
+                <ul>
+                    <li>WhatsApp: <a href="https://wa.me/56964151813" target="_blank" rel="noopener">+56 9 6415 1813</a></li>
+                    <li>Email: <a href="mailto:mjesusriquelmelopez@gmail.com">mjesusriquelmelopez@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Zonas de atención</h3>
+                <ul>
+                    <li>📍 Viña del Mar</li>
+                    <li>📍 Reñaca</li>
+                    <li>📍 Concón</li>
+                    <li>📍 Quilpué</li>
+                </ul>
+            </div>
         </div>
-
-        <div class="faq-container fade-in" style="max-width: 800px; margin: auto; display: flex; flex-direction: column; gap: 1.2rem;">
-            
-            <div style="background-color: var(--white); padding: 1.5rem 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-left: 4px solid var(--primary);">
-                <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.5rem;"> ¿Qué necesito tener listo en casa?</h3>
-                <p style="color: var(--text-light); line-height: 1.6; margin: 0;">Un espacio donde poder instalar la camilla. Si el ambiente es frío, te recomiendo que se tempere previamente para una mejor experiencia de relajación.</p>
-            </div>
-
-            <div style="background-color: var(--white); padding: 1.5rem 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-left: 4px solid var(--primary);">
-                <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.5rem;"> ¿Qué equipamiento llevas tú?</h3>
-                <p style="color: var(--text-light); line-height: 1.6; margin: 0;">Llevo todo lo necesario: camilla portátil, sábanas, frazadas, música de relajación, aromaterapia y aceite hipoalergénico.</p>
-            </div>
-
-            <div style="background-color: var(--white); padding: 1.5rem 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-left: 4px solid var(--primary);">
-                <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.5rem;"> ¿Con cuánto tiempo debo agendar?</h3>
-                <p style="color: var(--text-light); line-height: 1.6; margin: 0;">Debes agendar con al menos 24 horas de anticipación.</p>
-            </div>
-
-            <div style="background-color: var(--white); padding: 1.5rem 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-left: 4px solid var(--primary);">
-                <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.5rem;"> ¿Cuál es el método de pago?</h3>
-                <p style="color: var(--text-light); line-height: 1.6; margin: 0;">El pago se realiza mediante transferencia bancaria.</p>
-            </div>
-
-        </div>
-    </section>
-
-
-   <!-- Sección de Reseñas y Opiniones -->
-    <section class="section">
-        <div class="text-center fade-in">
-            <h2 class="section-title">Opiniones de Pacientes</h2>
-            <p style="color: var(--text-light); margin-bottom: 2.5rem;">La experiencia y satisfacción de quienes confían en mi trabajo es mi mejor respaldo.</p>
-        </div>
-
-        <!-- Tarjetas de Comentarios de Pacientes -->
-        <div class="reviews-grid fade-in" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto 2.5rem auto;">
-            
-            <!-- Reseña 1 -->
-            <div style="background-color: var(--white); padding: 1.8rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; text-align: left;">
-                <div>
-                    <div style="color: #C5A059; font-size: 1.1rem; margin-bottom: 0.8rem;">⭐ ⭐ ⭐ ⭐ ⭐</div>
-                    <p style="color: var(--text-dark); line-height: 1.6; font-style: italic; margin-bottom: 1rem;">"Excelente atención y profesionalismo. El drenaje linfático postoperatorio me ayudó muchísimo en mi recuperación. Muy recomendada."</p>
-                </div>
-                <span style="font-weight: 600; color: var(--primary); font-size: 0.95rem;">— María P.</span>
-            </div>
-
-            <!-- Reseña 2 -->
-            <div style="background-color: var(--white); padding: 1.8rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; text-align: left;">
-                <div>
-                    <div style="color: #C5A059; font-size: 1.1rem; margin-bottom: 0.8rem;">⭐ ⭐ ⭐ ⭐ ⭐</div>
-                    <p style="color: var(--text-dark); line-height: 1.6; font-style: italic; margin-bottom: 1rem;">"Puntual, equipamiento impecable y muy buena técnica para masajes descontracturantes. La comodidad de recibir la atención en casa no tiene precio."</p>
-                </div>
-                <span style="font-weight: 600; color: var(--primary); font-size: 0.95rem;">— Camila S.</span>
-            </div>
-
-            <!-- Reseña 3 -->
-            <div style="background-color: var(--white); padding: 1.8rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; text-align: left;">
-                <div>
-                    <div style="color: #C5A059; font-size: 1.1rem; margin-bottom: 0.8rem;">⭐ ⭐ ⭐ ⭐ ⭐</div>
-                    <p style="color: var(--text-dark); line-height: 1.6; font-style: italic; margin-bottom: 1rem;">"Servicio 100% profesional. Se nota la experiencia y el cuidado en cada detalle durante la sesión. Definitivamente seguiré agendando."</p>
-                </div>
-                <span style="font-weight: 600; color: var(--primary); font-size: 0.95rem;">— Andrea M.</span>
-            </div>
-
-        </div>
-
-        <!-- Botón para Calificar en Google -->
-        <div class="text-center fade-in" style="background-color: var(--white); padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 600px; margin: auto;">
-            <p style="font-size: 1.15rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">¿Has recibido una terapia conmigo?</p>
-            <p style="color: var(--text-light); margin-bottom: 1.5rem;">Tu opinión ayuda a que otros pacientes tomen la mejor decisión para su bienestar.</p>
-            
-            <a href="https://g.page/r/Cf1yF8eg_kZwEBM/review" target="_blank" class="btn-principal" style="background-color: var(--primary); color: white;">
-                ⭐ Dejar una reseña en Google
-            </a>
-        </div>
-    </section>
-    <footer>
-        <h2>Estudio de Masajes María Jesús Riquelme SpA</h2>
-        <p>Contacto: <a href="https://wa.me/56964151813">+56 9 6415 1813</a></p>
-        <p>Email: <a href="mailto:mjesusriquelmelopez@gmail.com">mjesusriquelmelopez@gmail.com</a></p>
-        <p>📍 Zonas de atención: Viña del Mar, Reñaca, Concón y Quilpué</p>
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">© 2026 Todos los derechos reservados.</p>
+        <p class="footer-bottom">© <span id="year">2026</span> Estudio de Masajes María Jesús Riquelme SpA. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
+        document.addEventListener("DOMContentLoaded", function () {
+            // Animación al hacer scroll
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); 
+                        obs.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(el => {
-                observer.observe(el);
+            // Menú móvil
+            const toggle = document.querySelector('.nav-toggle');
+            const menu = document.getElementById('menu');
+            toggle.addEventListener('click', () => {
+                const abierto = menu.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', abierto);
+                toggle.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+                toggle.textContent = abierto ? '✕' : '☰';
             });
-        });
+            menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+                menu.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Abrir menú');
+                toggle.textContent = '☰';
+            }));
 
-        function toggleDetails(id) {
-            const element = document.getElementById(id);
-            const button = element.previousElementSibling;
-            
-            if (element.classList.contains('open')) {
-                element.classList.remove('open');
-                button.innerHTML = 'Ver detalles y beneficios ▼';
-            } else {
-                element.classList.add('open');
-                button.innerHTML = 'Ocultar detalles ▲';
-            }
-        }
+            // Resaltar sección activa en el menú
+            const navLinks = menu.querySelectorAll('a[href^="#"]');
+            const sectionObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+                    }
+                });
+            }, { rootMargin: '-45% 0px -50% 0px' });
+            document.querySelectorAll('section[id], footer[id]').forEach(s => sectionObserver.observe(s));
+
+            // Detalles de servicios
+            document.querySelectorAll('.btn-toggle').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const detalle = document.getElementById(btn.getAttribute('aria-controls'));
+                    const abierto = detalle.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', abierto);
+                });
+            });
+
+            // Año actual en el footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
     </script>
 
 </body>
